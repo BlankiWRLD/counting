@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Counting</title>
+</head>
+<body>
+    <div class="box">
+        <h1>How much time has passed since joining the group</h1>
+        <p id="count"></p>
+        <h5>Love u all 😋</h5>
+    </div>
+    <script>
+        // count time since 28.02.2023 17:40 
+        var countDownDate = new Date("Feb 28, 2023 17:40:00").getTime();
+        // display time every second
+        var x = setInterval(function() {
+            // get current time
+            var now = new Date().getTime();
+            // calculate time difference
+            var distance = now - countDownDate;
+            // calculate days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // display result
+            document.getElementById("count").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+            // if time is up, display message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("count").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
